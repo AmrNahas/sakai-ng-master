@@ -4,7 +4,9 @@ import { CustomerService } from 'src/app/demo/service/customer.service';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
 import { Table } from 'primeng/table';
-import { MessageService, ConfirmationService } from 'primeng/api';
+import {MessageService, ConfirmationService, SelectItem} from 'primeng/api';
+import {LayoutService} from "../../../../layout/service/app.layout.service";
+import {Router} from "@angular/router";
 
 interface expandedRows {
     [key: string]: boolean;
@@ -15,6 +17,50 @@ interface expandedRows {
     providers: [MessageService, ConfirmationService]
 })
 export class TableDemoComponent implements OnInit {
+
+
+    selectedCountry: any;
+    items: string[] = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
+    filteredItems: string[];
+    selectedItem: string;
+
+
+    // countries: any[] = [];
+    filteredCountries: any[] = [];
+
+    searchItems(event) {
+        this.filteredItems = this.items.filter(item => item.toLowerCase().includes(event.query.toLowerCase()));
+    }
+    selectedCountryAdvanced: any[] = [];
+    selectedDrop: SelectItem = { value: '' };
+    cities: SelectItem[] = [];
+    countries = [
+        {"name": "Umrah", "code": "Umrah"},
+        {"name": "Rawda", "code": "Rawda"},
+
+    ];
+
+    filterCountry(event: any) {
+        const filtered: any[] = [];
+        const query = event.query;
+        for (let i = 0; i < this.countries.length; i++) {
+            const country = this.countries[i];
+            if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+                filtered.push(country);
+            }
+        }
+
+        this.filteredCountries = filtered;
+
+    }
+
+
+
+
+    next(stage) {
+
+        console.log(this.selectedDrop);
+    }
 
     customers1: Customer[] = [];
 
@@ -49,6 +95,11 @@ export class TableDemoComponent implements OnInit {
     constructor(private customerService: CustomerService, private productService: ProductService) { }
 
     ngOnInit() {
+        this.cities = [
+            { label: 'Umrah', value: 1 },
+            { label: 'Rawda', value: 2 },
+        ];
+
         this.customerService.getCustomersLarge().then(customers => {
             this.customers1 = customers;
             this.loading = false;
@@ -134,5 +185,5 @@ export class TableDemoComponent implements OnInit {
         table.clear();
         this.filter.nativeElement.value = '';
     }
-    
+
 }
