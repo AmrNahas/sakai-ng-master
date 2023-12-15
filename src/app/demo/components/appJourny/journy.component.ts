@@ -21,7 +21,7 @@ export class JournyComponent {
     planingStepsInfo: PlaningStepsInfo[] = [];
 
     ngOnInit() {
-        this.step =2
+        this.step =1
         this.autoCompeletDone=true;
     }
 
