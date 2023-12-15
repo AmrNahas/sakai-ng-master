@@ -1,0 +1,8 @@
+{
+    "data": [
+        {"header": "Planning Your Nusuk Journey","desc": "Nusuk Service","stepNum":1,"placeholder":"Nusuk Service", "other": "AF"},
+        {"header": "Planning Your Nusuk Journey","desc": "Gender","stepNum":1,"placeholder":"Gender", "other": "AF"},
+        {"header": "Planning Your Nusuk Journey","desc": "count of family","stepNum":1,"placeholder":"count of family", "other": "AF"},
+        {"header": "Planning Your Nusuk Journey","desc": "times","stepNum":1,"placeholder":"times", "other": "AF"}
+    ]
+}

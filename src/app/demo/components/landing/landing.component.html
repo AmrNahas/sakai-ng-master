@@ -16,19 +16,20 @@
                         </a>
                     </li>
                     <li>
-                        <a (click)="router.navigate(['/landing'], {fragment: 'features'})" pRipple class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
+                        <a (click)="router.navigate(['/landing'], {fragment: 'highlights'})" pRipple class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
                             <span>Services</span>
                         </a>
                     </li>
                     <li>
-                        <a (click)="router.navigate(['/landing'], {fragment: 'highlights'})" pRipple class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
+                        <a (click)="router.navigate(['/landing'], {fragment: 'features'})" pRipple class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
                             <span>About</span>
                         </a>
                     </li>
 
                 </ul>
                 <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0">
-                    <button pButton pRipple label="Start Your Journy" class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gray-600 text-white"></button>
+                    <button pButton pRipple label="Start Your Journy" [routerLink]="'/planner'"
+                            class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
                 </div>
             </div>
         </div>
@@ -41,7 +42,7 @@
             <a class="flex align-items-center ml-2 mr-8">
                 <a class="text-white" href="#"><span class="underline font-bold">Learn More</span></a>
             </a>
-            <a pRipple class="flex align-items-center no-underline justify-content-center border-circle text-gray-50 hover:bg-bluegray-700 cursor-pointer transition-colors transition-duration-150" style="width:2rem; height: 2rem">
+            <a pRipple  class="flex align-items-center no-underline justify-content-center border-circle text-gray-50 hover:bg-bluegray-700 cursor-pointer transition-colors transition-duration-150" style="width:2rem; height: 2rem">
                 <i class="pi pi-times"></i>
             </a>
         </div>
@@ -60,7 +61,7 @@
 
                    <!-- <button pButton pRipple label="Learn More" type="button" class="mr-3 p-button-raised"></button>-->
 <!--                    <button pButton pRipple label="Start The Journey" type="button" class="p-button-outlined"></button>-->
-                    <button pButton pRipple label="Start Your Journy" class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gray-600 text-white"></button>
+                    <button [routerLink]="'/planner'" pButton pRipple label="Start Your Journey" class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
 
                 </section>
             </div>
@@ -120,22 +121,22 @@
                 <div class="text-700 text-sm mb-6"> Planning your Umrah journey can be an exciting and fulfilling experience. Here are some steps to help you plan your Umrah journey with ease</div>
                 <div class="grid">
                     <div class="col-12 md:col-4 mb-4 px-5">
-            <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <i class="pi pi-desktop text-4xl text-blue-500"></i>
+            <span  class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px; color: #0a3622">
+                <i class="pi pi-desktop text-4xl text-black-500"></i>
             </span>
                         <div class="text-900 mb-3 font-medium">Choose Your Ideal Umrah Package</div>
                         <span class="text-700 text-sm line-height-3">Our service simplifies the process of planning your Umrah pilgrimage. We provide a step-by-step guide to help you navigate through the entire journey, from selecting the right package to booking your flights and accommodations.</span>
                     </div>
                     <div class="col-12 md:col-4 mb-4 px-5">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <i class="pi pi-lock text-4xl text-blue-500"></i>
+                <i class="pi pi-lock text-4xl text-black-500"></i>
             </span>
                         <div class="text-900 mb-3 font-medium">Customize Your Umrah Experience</div>
                         <span class="text-700 text-sm line-height-3"> Personalize your Umrah journey by adding additional services and experiences. Whether you want to visit historical sites, have a private guide, or upgrade your accommodations, we have options to suit your preferences.</span>
                     </div>
                     <div class="col-12 md:col-4 mb-4 px-5">
             <span class="p-3 shadow-2 mb-3 inline-block surface-card" style="border-radius: 10px">
-                <i class="pi pi-check-circle text-4xl text-blue-500"></i>
+                <i class="pi pi-check-circle text-4xl text-black-500"></i>
             </span>
                         <div class="text-900 mb-3 font-medium">Book with Confidence</div>
                         <span class="text-700 text-sm line-height-3"> Rest assured knowing that our team is dedicated to providing exceptional customer service. We handle all the logistics, ensuring a seamless and stress-free experience for your Umrah pilgrimage.</span>
@@ -145,7 +146,7 @@
             </div>
         </div>
 
-        <div class="py-4 px-4 mx-0 mt-8 lg:mx-8">
+        <div id="features" class="py-4 px-4 mx-0 mt-8 lg:mx-8">
             <div class="grid justify-content-between">
                 <div class="col-12 md:col-2" style="margin-top:-1.5rem;">
                     <a (click)="router.navigate(['/pages/landing'], {fragment: 'home'})" class="flex flex-wrap align-items-center justify-content-center md:justify-content-start md:mb-0 mb-3 cursor-pointer">

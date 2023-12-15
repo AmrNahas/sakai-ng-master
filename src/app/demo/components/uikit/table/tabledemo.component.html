@@ -3,11 +3,25 @@
 		<div class="card">
 			<h5>Filter Menu</h5>
 
-                       <p-dropdown  [options]="cities" [(ngModel)]="selectedDrop" placeholder="Select..." [showClear]="true"></p-dropdown>
-                       <button style="float:left" pButton pRipple (click)="next(1)" type="button" label="next" class="p-button-secondary p-button-text"></button>
 
        </div>
 
 		</div>
 	</div>
 
+
+
+
+<div class="surface-section px-4   md:px-6 lg:px-8">
+    <div class="text-700 text-center">
+        <!--  <div class="text-blue-600 font-bold mb-3"><i class="pi pi-discord"></i>&nbsp;POWERED BY DISCORD</div>-->
+        <div class="text-900 font-bold text-5xl mb-3">Planning Your Nusuk Journey</div>
+        <div class="text-700 text-2xl mb-5">Please tell me which service you need </div>
+        <button pButton pRipple label="Join Now" icon="pi pi-discord" class="font-bold px-5 py-3 p-button-raised p-button-rounded white-space-nowrap"></button>
+
+    </div>
+</div>
+
+<!--
+<p-autoComplete placeholder="select ..."  style="border: 2px  solid;" class="rounded-input" [(ngModel)]="selectedItem" [suggestions]="filteredItems" (completeMethod)="searchItems($event)"></p-autoComplete>
+-->

@@ -1,0 +1,42 @@
+
+/*
+.search-container {
+    display: flex;
+    align-items: center;
+}
+*/
+
+.rounded-input {
+ /*   border-radius: 20px !important; !* Adjust the value to control the roundness of the input *!
+    padding: 8px  !important ;!* Adjust the padding as needed *!*/
+    border: 2px solid var(--fieldStrokeEnabled);
+    border-radius: 30px;
+    padding: 0 12px;
+
+}
+
+.search-icon {
+    margin-left: 5px; /* Adjust the margin to control the space between the input and the icon */
+    cursor: pointer;
+}
+
+.form-rounded {
+    border-radius: 1rem;
+    border: 2px solid ;
+  /*  border-radius: 30px;*/
+    padding: 0 12px;
+}
+
+
+.bg-gold-600 {
+    background-color: #c1a580 !important;
+    width: 15%;
+}
+
+.enhanced-textarea {
+    font-size: 12px;
+    font-weight: bold;
+    color: #6d767e;
+    padding: 10px 10px;
+    /* Additional CSS properties as needed */
+}
