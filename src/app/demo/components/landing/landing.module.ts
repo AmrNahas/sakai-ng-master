@@ -1,17 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LandingRoutingModule } from './landing-routing.module';
-import { LandingComponent } from './landing.component';
-import { StyleClassModule } from 'primeng/styleclass';
-import { DividerModule } from 'primeng/divider';
-import { ChartModule } from 'primeng/chart';
-import { PanelModule } from 'primeng/panel';
-import { ButtonModule } from 'primeng/button';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LandingRoutingModule} from './landing-routing.module';
+import {LandingComponent} from './landing.component';
+import {StyleClassModule} from 'primeng/styleclass';
+import {DividerModule} from 'primeng/divider';
+import {ChartModule} from 'primeng/chart';
+import {PanelModule} from 'primeng/panel';
+import {ButtonModule} from 'primeng/button';
 import {AutoCompleteModule} from "primeng/autocomplete";
 import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
 import {FormsModule} from "@angular/forms";
-import {InputDemoRoutingModule} from "../uikit/input/inputdemo-routing.module";
 import {CalendarModule} from "primeng/calendar";
 import {ChipsModule} from "primeng/chips";
 import {InputMaskModule} from "primeng/inputmask";
@@ -49,7 +48,6 @@ import {DialogModule} from "primeng/dialog";
         DropdownModule,
         FormsModule,
         FormsModule,
-        InputDemoRoutingModule,
         AutoCompleteModule,
         CalendarModule,
         ChipsModule,

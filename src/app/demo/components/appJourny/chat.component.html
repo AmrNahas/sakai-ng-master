@@ -56,12 +56,21 @@
         <div class="flex flex-column pt-4 px-4 lg:px-8 overflow-hidden">
 
             <div class="text-700 text-center">
-                <div class="text-900 font-bold text-xl mb-3">Welcome {{userInfo.fullName}} , I am  Your Nusuk  AI Assistance ...How Can I Help You</div>
+                <div class="text-900 font-bold text-xl mb-3">
+                    Welcome {{userInfo.fullName}} , I am  Your Nusuk  AI Assistance ...How Can I Help You</div>
             </div>
 
             <div class="scrollableDiv" #scrollableDiv>
+                <div  >
+                    <vg-player *ngIf="srcInit && messgesList.length==0 ">
+                        <vg-player>
+                            <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" autoplay controls>
+                                <source src="{{srcInit}}" type="video/mp4">
+                            </video>
+                        </vg-player>
+                    </vg-player>
+                </div>
                 <div *ngFor="let item of messgesList; let i = index;">
-
                     <p-fieldset   legend="{{item.userName}}" [toggleable]="true"
                                 class="line-height-3 m-0">
                         <p  > {{item.msgFrom}}</p>
@@ -74,7 +83,16 @@
                             <p-skeleton width="75%"></p-skeleton>
                         </div>
                       <p   >{{item.msgTo ? item.msgTo : ''}}</p>
-                        <audio *ngIf="item.audioMsg" controls src="{{item.audioMsg}}"></audio>
+                        <audio *ngIf="item.audioMsg" controls src="{{item.audioMsg}}" autoplay></audio>
+                  <div style="width:250px; height:250px;">
+                      <vg-player *ngIf="item.videoSrc">
+                            <vg-player>
+                                <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+                                    <source src="{{item.videoSrc}}" type="video/mp4">
+                                </video>
+                            </vg-player>
+                        </vg-player>
+                  </div>
                     </p-fieldset>
 
 

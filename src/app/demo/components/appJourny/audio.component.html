@@ -61,20 +61,22 @@
 
             <div class="scrollableDiv" #scrollableDiv>
                 <div *ngFor="let item of messgesList; let i = index;">
-
                     <p-fieldset   legend="{{item.userName}}" [toggleable]="true"
                                 class="line-height-3 m-0">
-                        <p  > {{item.msgFrom}}</p>
+
+                        <audio  *ngIf="item.audioMsgBlobFrom"  controls>
+                            <source [src]="item.audioMsgBlobFrom" type="audio/webm">
+                        </audio>
+
                     </p-fieldset>
                     <br/>
 
                     <p-fieldset dir="rtl" legend="{{item.appAdvisorName}}" [toggleable]="true" class="line-height-3 m-0">
-                        <div *ngIf="!item.msgTo">
+                        <div *ngIf="!item.audioMsgBlobTo">
                             <p-skeleton width="100%" styleClass="mb-2"></p-skeleton>
                             <p-skeleton width="75%"></p-skeleton>
                         </div>
-                      <p   >{{item.msgTo ? item.msgTo : ''}}</p>
-                        <audio *ngIf="item.audioMsg" controls src="{{item.audioMsg}}"></audio>
+                        <audio *ngIf="item.audioMsgBlobTo" controls src="{{item.audioMsgBlobTo}}"></audio>
                     </p-fieldset>
 
 
@@ -82,55 +84,34 @@
                 </div>
             </div>
 
-
-            <textarea class="form-control form-rounded enhanced-textarea" [(ngModel)]="messageFrom" rows="3"
-                      placeholder="Write ..."></textarea>
-            <div class="text-700 text-center">
-                <div>
-                    <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
-
-                    <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
-
-                    <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
-
-                    <br>
-                    <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="download()">Download Recording</button>
-
-                    <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
-                    <div>
-                        <audio *ngIf="!isRecording && blobUrl" controls>
-                            <source [src]="blobUrl" type="audio/webm">
-                        </audio>
-                    </div>
-                </div>
-
-            </div>
 <hr/>
+
+
+
+
 
             <div class="col-12">
                     <div class="grid">
-                        <div class="col-12 md:col-6">
-                            <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                <input type="text" pInputText placeholder="Username">
-                            </div>
+                        <div class="col-12 md:col-3">
+                                <button class="start-button" *ngIf="!isRecording && !blobUrl" (click)="startRecording()">Start Recording</button>
                         </div>
-                        <div class="col-12 md:col-6">
-                            <div class="p-inputgroup">
-                                <input type="text" pInputText placeholder="Price">
-                            </div>
+                        <div class="col-12 md:col-3">
+                                <button class="stop-button" *ngIf="isRecording && !blobUrl" (click)="stopRecording()">Stop Recording</button>
                         </div>
+                        <div class="col-12 md:col-3">
+                                <button class="cancel-button" *ngIf="!isRecording && blobUrl && this.allowedToSend" (click)="sendAudio()">Send</button>
+                        </div>
+                        <div class="col-12 md:col-8">
+                            <div class="p-inputgroup">
+                                <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
+                                <div>
+                                    <audio *ngIf="!isRecording && blobUrl" controls>
+                                        <source [src]="blobUrl" type="audio/mp3">
+                                    </audio>
+                                    <button class="cancel-button" *ngIf="!isRecording && blobUrl" (click)="clearRecordedData()">Clear Recording</button>
+                                </div>
+                            </div>
 
-                        <div class="col-12 md:col-6">
-                            <div class="p-inputgroup">
-                                <button type="button" pButton pRipple label="Search"></button>
-                                <input type="text" pInputText placeholder="Keyword">
-                            </div>
-                        </div>
-                        <div class="col-12 md:col-6">
-                            <div class="p-inputgroup">
-                                <input type="text" pInputText placeholder="Username">
-                            </div>
                         </div>
                 </div>
             </div>

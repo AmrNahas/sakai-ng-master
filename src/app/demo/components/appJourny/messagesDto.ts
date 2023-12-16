@@ -4,4 +4,8 @@ export class MessagesDto{
     appAdvisorName:string;
     userName:string;
     audioMsg:string;
+    videoSrc:string;
+    audioMsgBlobFrom:any
+    audioMsgBlobTo:any
+
 }

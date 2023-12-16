@@ -40,6 +40,24 @@ export class ChatComponent {
         if (this.userInfo)
             this.allowedToSend = true;
 
+          this.getVideoInit("Welcome "+this.userInfo.fullName+" To Nusuk Ai Advisor , How Can  I  Help You  For Your Nusuk Journy ")
+
+    }
+
+    getVideoInit(msg) {
+        console.log("knjkhn")
+        this.gbtService.textToVideo(msg, null).subscribe({
+            next: (res: any) => {
+                if (res) {
+                    console.log(res)
+                    this.srcInit = res.text;
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
+
     }
 
     @ViewChild('scrollableDiv', {static: true}) myDiv: ElementRef;
@@ -51,11 +69,14 @@ export class ChatComponent {
 
     allowedToSend: boolean
     audio: string;
-      msgDto: MessagesDto = new MessagesDto();
+    msgDto: MessagesDto = new MessagesDto();
+    srcInit: string;
+
+
     send() {
         this.allowedToSend = false;
         this.scrollToBottom()
-          this.msgDto  = new MessagesDto();
+        this.msgDto = new MessagesDto();
         this.msgDto.msgFrom = this.messageFrom;
         this.msgDto.appAdvisorName = "Nusuk Advisor AI"
         this.msgDto.userName = this.userInfo.fullName
@@ -68,6 +89,7 @@ export class ChatComponent {
                     this.msgDto.msgTo = res.chatResponse;
                     this.allowedToSend = true;
                     this.textToAudio(this.msgDto.msgTo)
+                    this.getVideo(this.msgDto.msgTo);
 
                 }
             },
@@ -85,12 +107,11 @@ export class ChatComponent {
     }
 
     textToAudio(msg) {
-        this.audio=null;
+        this.audio = null;
         this.gbtService.textToAudio(msg, this.threadId).subscribe({
             next: (res: string) => {
                 if (res) {
-                    console.log(res)
-                    this.msgDto.audioMsg="data:audio/ogg;base64," + res;
+                    this.msgDto.audioMsg = "data:audio/ogg;base64," + res;
                 }
             },
             error: (err) => {
@@ -98,6 +119,21 @@ export class ChatComponent {
                 console.log(err);
             },
         });
+    }
+
+
+    getVideo(msg) {
+        this.gbtService.textToVideo(msg, null).subscribe({
+            next: (res: any) => {
+                if (res) {
+                    this.msgDto.videoSrc = res.text;
+                }
+            },
+            error: (err) => {
+                console.log(err);
+            },
+        });
+
     }
 
     saveChatKey() {

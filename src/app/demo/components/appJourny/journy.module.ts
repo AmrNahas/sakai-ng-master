@@ -9,7 +9,6 @@ import {AutoCompleteModule} from "primeng/autocomplete";
 import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
 import {FormsModule} from "@angular/forms";
-import {InputDemoRoutingModule} from "../uikit/input/inputdemo-routing.module";
 import {CalendarModule} from "primeng/calendar";
 import {ChipsModule} from "primeng/chips";
 import {InputMaskModule} from "primeng/inputmask";
@@ -44,6 +43,10 @@ import {CardModule} from "primeng/card";
 import {TooltipModule} from "primeng/tooltip";
 import {AudioComponent} from "./audio.component";
 import {AudioRecordingService} from "./AudioRecordingService";
+import {VgCoreModule} from "@videogular/ngx-videogular/core";
+import {VgControlsModule} from "@videogular/ngx-videogular/controls";
+import {VgOverlayPlayModule} from "@videogular/ngx-videogular/overlay-play";
+import {VgBufferingModule} from "@videogular/ngx-videogular/buffering";
 
 
 @NgModule({
@@ -60,7 +63,6 @@ import {AudioRecordingService} from "./AudioRecordingService";
         DropdownModule,
         FormsModule,
         FormsModule,
-        InputDemoRoutingModule,
         AutoCompleteModule,
         CalendarModule,
         ChipsModule,
@@ -91,6 +93,10 @@ import {AudioRecordingService} from "./AudioRecordingService";
         TimelineModule,
         CardModule,
         TooltipModule,
+        VgCoreModule,
+        VgControlsModule,
+        VgOverlayPlayModule,
+        VgBufferingModule
 
 
     ],
