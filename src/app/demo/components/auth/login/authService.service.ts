@@ -10,7 +10,7 @@ export class AuthServiceService {
 
 
     mainHostForBackend: string ='http://192.168.0.99:8080/api';
-    mainHostForBackend_prod: string = 'http://10.128.16.21:8080'
+    mainHostForBackend_prod: string = 'http://10.128.16.21:8080/api'
     response: any = {};
 
     headers = new HttpHeaders()
@@ -32,12 +32,12 @@ export class AuthServiceService {
             .set('Access-Control-Allow-Origin', 'http://localhost:4200')
             .set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
             .set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE,OPTIONS');
-        return this.http.get(this.mainHostForBackend_prod + "/user" + "/" + username, {headers})
+        return this.http.get(this.mainHostForBackend + "/user" + "/" + username, {headers})
     }
 
 
     public reg(fullName: string, birthDate: string, id: string, gender: number, username: string, email: string, password: string): Observable<any> {
-        return this.http.post<any>(this.mainHostForBackend_prod + "/user/public/register", {
+        return this.http.post<any>(this.mainHostForBackend + "/user/public/register", {
             "fullName": fullName,
             "identification": id,
             "email": email,
