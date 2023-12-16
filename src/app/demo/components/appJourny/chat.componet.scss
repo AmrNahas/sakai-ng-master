@@ -98,7 +98,7 @@ button {
 }*/
 
 .scrollableDiv {
-    height: 500px;
+    height: 400px;
     overflow: auto;
     //border: 1px solid #ccc;
     padding: 6px;
@@ -245,3 +245,25 @@ button {
 #send-button {
     padding: 5px 10px;
 }
+
+
+
+.container {
+    position: relative;
+}
+
+.floating-div {
+    position: absolute; /* or 'fixed' if you want it to stay in place on scroll */
+    z-index: 10; /* Higher than other elements */
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    background-color: white; /* Or any color */
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.other-content {
+    /* Your styles for the content */
+}
+
+
