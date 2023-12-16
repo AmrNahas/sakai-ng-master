@@ -40,3 +40,28 @@
     padding: 10px 10px;
     /* Additional CSS properties as needed */
 }
+
+
+.text-black {
+    color: #343a40 !important
+}
+
+
+.clickableDiv {
+    cursor: pointer;
+    border: 1px solid transparent;
+    /*border: 3px solid transparent;*/
+ /*   transition: border-color 0.3s ease-in-out;*/
+    /* Additional styles to indicate clickability */
+}
+
+
+
+
+.clickableDiv:hover {
+/*    border-color: black;
+    border: 5px solid transparent ;*/
+    transition: border-color 0.3s ease-in-out;
+      borderRadius: '1rem';
+    background: linear-gradient(0deg, rgb(40 46 56), rgb(219 172 110)), linear-gradient(92.54deg, rgb(58 55 50) 47.88%, rgb(255, 255, 255) 100.01%)
+}

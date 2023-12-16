@@ -13,7 +13,7 @@
                 <ul class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row cursor-pointer">
                     <li>
                         <a pRipple class="flex m-0 md:ml-5 px-0 py-3 text-900 font-medium line-height-3">
-                            <span>Planning Your Nusuk Journy </span>
+                            <span>Planning Your Nusuk Journy {{getServiceName()}}  {{  goWith()}}</span>
                         </a>
                     </li>
 
@@ -47,35 +47,54 @@
                 </div>
 
 
-                <input class="form-control form-rounded enhanced-textarea" (keyup)="getPLanerQuestions()"
-                       pInputText [(ngModel)]="input1"
-                       placeholder="Search By Nusuk Service Umrah , Rawda ..."/>
-                <span class="p-float-label p-input-icon-right" style="font-weight: bold" >
-                   <i   style="margin-top: -28px" *ngIf="!autoCompeletDone" class="pi pi-spin pi-spinner"></i>
-                </span>
+
+                <div class=" px-4 py-5 md:px-6 lg:px-8">
+                    <div class="grid">
+                        <div class="col-12 md:col-6 lg:col-6">
+                            <a  (click)="setServiceType(1)">
+                            <div  class="clickableDiv px-4 py-5 shadow-2 flex flex-column md:flex-row md:align-items-center justify-content-between mb-3"
+                                  >
+                                <div>
+                                    <div class="text-black font-bold text-3xl mt-2 mb-3">Performing Umrah</div>
+                                    <div class="text-white font-small text-muted ">Performing Umrah in Makkah</div>
+                                </div>
+                                 <div class="mt-4 mr-auto md:mt-0 md:mr-0">
+                                    <img width="50" height="50" src="assets/demo/images/landing/kaaba.png"/>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-12 md:col-6 lg:col-6">
+                            <a  (click)="setServiceType(2)">
+                            <div class="px-4 clickableDiv py-5 shadow-2 flex flex-column md:flex-row md:align-items-center justify-content-between mb-3"
+                                >
+                                <div>
+                                    <div class="text-black font-bold text-3xl mt-2 mb-3">Rawda Visiting </div>
+                                    <div class="text-white font-small text-muted ">Rawda Visiting In Madina</div>
+                                </div>
+                                <div class="mt-4 mr-auto md:mt-0 md:mr-0">
+                                    <img width="50" height="50" src="assets/demo/images/landing/kaaba.png"/>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
 
 
-                <div class="text-700 text-center">
-                    <div class="text-700 text-2xl mb-5  py-4 ">
-                        <button (click)="next(1)" pButton pRipple label="Next"
-                                class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
-
-                    </div>
-                    <div class="surface-section px-4 py-6 md:px-6 lg:px-8">
                     </div>
                 </div>
+
             </ng-container>
 
             <ng-container *ngIf="step==2">
                 <div class="text-700 text-center">
-                    <div class="text-900 font-bold text-3xl mb-3">Planning Your Nusuk Journey 3</div>
+                    <div class="text-900 font-bold text-3xl mb-3">Planning Dates</div>
                     <div class="text-500 font-bold text-2xl mb-3 text-muted">  <i class="pi pi-calendar" style="font-size: 2rem"></i> Start date → End date</div>
-                    <p-calendar class="max-w-full" [(ngModel)]="date" [inline]="true" selectionMode="range"  ></p-calendar>
+                    <p-calendar class="max-w-full" [(ngModel)]="date"    [inline]="true" selectionMode="range"  ></p-calendar>
                 </div>
 
                 <div class="text-700 text-center">
                     <div class="text-700 text-2xl mb-5  py-4 ">
-                        <button (click)="next(3)" pButton pRipple label="Next"
+                        <button (click)="next(2)" pButton pRipple label="Next Step"
                                 class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
                     </div>
                     <div class="surface-section px-4 py-6 md:px-6 lg:px-8">
@@ -85,24 +104,94 @@
 
             <ng-container *ngIf="step==3">
                 <div class="text-700 text-center">
-                    <div class="text-900 font-bold text-3xl mb-3">Planning Your Nusuk Journey 2</div>
+                    <div class="text-900 font-bold text-3xl mb-3">Who’s coming with you?</div>
                 </div>
-                <textarea class="form-control form-rounded enhanced-textarea" [(ngModel)]="input1" rows="3"
-                          placeholder="How Can I Help U ..."></textarea>
-                <div class="text-700 text-center">
-                    <div class="text-700 text-2xl mb-5  py-4 ">
-                        <button (click)="next(2)" pButton pRipple label="Next"
-                                class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
+                <div class=" px-4 py-5 md:px-6 lg:px-12">
+                    <div class="grid">
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <a  (click)="setComingWith(1)">
+                                <div  class="clickableDiv px-4 py-5 shadow-2 flex flex-column md:flex-row md:align-items-center justify-content-between mb-3"
+                                  >
+                                    <div>
+                                        <div class="text-black font-bold text-3xl mt-2 mb-3">Going Alone</div>
+                                    </div>
+                                    <div class="mt-4 mr-auto md:mt-0 md:mr-0">
+                                        <img width="50" height="50" src="assets/demo/images/landing/kaaba.png"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <a  (click)="setComingWith(2)">
+                                <div class="px-4 clickableDiv py-5 shadow-2 flex flex-column md:flex-row md:align-items-center justify-content-between mb-3"
+                                  >
+                                    <div>
+                                        <div class="text-black font-bold text-3xl mt-2 mb-3">Family</div>
+                                    </div>
+                                    <div class="mt-4 mr-auto md:mt-0 md:mr-0">
+                                        <img width="50" height="50" src="assets/demo/images/landing/kaaba.png"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
+                        <div class="col-12 md:col-6 lg:col-4">
+                            <a  (click)="setComingWith(3)">
+                                <div class="px-4 clickableDiv py-5 shadow-2 flex flex-column md:flex-row md:align-items-center justify-content-between mb-3"
+                                  >
+                                    <div>
+                                        <div class="text-black font-bold text-3xl mt-2 mb-3">Friends</div>
+                                    </div>
+                                    <div class="mt-4 mr-auto md:mt-0 md:mr-0">
+                                        <img width="50" height="50" src="assets/demo/images/landing/kaaba.png"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
-                    <div class="surface-section px-4 py-6 md:px-6 lg:px-8">
-                    </div>
                 </div>
+
             </ng-container>
 
 
+            <ng-container *ngIf="step==4">
+                <div class="text-700 text-center">
+                    <div class="text-900 font-bold text-3xl mb-3">Please add Your Notes </div>
+                </div>
+                <textarea class="form-control form-rounded enhanced-textarea" [(ngModel)]="input1" rows="3"
+                          placeholder="Optional Information ..."></textarea>
+                <div class="text-700 text-center">
+                    <div class="text-700 text-2xl mb-5  py-4 ">
+                        <button (click)="next(4)" pButton pRipple label="Submit"
+                                class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
+                    </div>
+
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="finished">
+                <div class="text-700 text-center">
+                    <div class="text-900 font-bold text-3xl mb-3">
+                      Keep Calm Our AI System Collecting Data For you ...
+                    </div>
+                    <p-progressSpinner *ngIf="loading" styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".8s"></p-progressSpinner>
+                </div>
+
+          <!--      <div class="text-700 text-center">
+                    <div class="text-700 text-2xl mb-5  py-4 ">
+                        <button (click)="next(4)" pButton pRipple label="Submit"
+                                class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
+                    </div>
+
+                </div>-->
+            </ng-container>
+
+
+
+            <hr/>
             <div id="features" class="py-4 px-4 mx-0 mt-8 lg:mx-8">
+
                 <div class="grid justify-content-between">
                     <div class="col-12 md:col-2" style="margin-top:-1.5rem;">
                         <a (click)="router.navigate(['/pages/landing'], {fragment: 'home'})"

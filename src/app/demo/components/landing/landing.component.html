@@ -28,9 +28,24 @@
 
                 </ul>
                 <div class="flex justify-content-between lg:block border-top-1 lg:border-top-none surface-border py-3 lg:py-0 mt-3 lg:mt-0">
-                    <button pButton pRipple label="Start Your Journy" [routerLink]="'/planner'"
+                    <button pButton pRipple  *ngIf="!userInfo" label="Login" [routerLink]="'/auth/login'"
                             class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
+
+                    <button pButton pRipple  *ngIf="!userInfo" label="Register" [routerLink]="'/auth/reg'"
+                            class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
+
                 </div>
+
+                <div class="menu text-center" *ngIf="userInfo">
+
+                    <p> welcome: {{userInfo.fullName}}  </p>
+
+                    <button class="p-link layout-topbar-button" (click)="logOut()" >
+                        <i class="pi pi-sign-out"></i>
+                    </button>
+
+                </div>
+
             </div>
         </div>
 
@@ -40,7 +55,7 @@
                 <span class="line-height-3"> Plan Your Umrah Journey with Ease .</span>
             </div>
             <a class="flex align-items-center ml-2 mr-8">
-                <a class="text-white" href="#"><span class="underline font-bold">Learn More</span></a>
+                <a class="text-white" (click)="goToChatAssistance()"><span class="underline font-bold">Try Our AI Assistance </span></a>
             </a>
             <a pRipple  class="flex align-items-center no-underline justify-content-center border-circle text-gray-50 hover:bg-bluegray-700 cursor-pointer transition-colors transition-duration-150" style="width:2rem; height: 2rem">
                 <i class="pi pi-times"></i>
@@ -193,3 +208,23 @@
         </div>
     </div>
 </div>
+
+
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap">Nusuk Advisor AI Suggest to  Login For Perfect Experience </span>
+        </div>
+    </ng-template>
+    <p class="m-0">
+        Welcom our Customer i am Your Nusuk Advisor AI   , we Are  happy to serve you
+        <br/>
+        PLease Login To Get Full Access To Our Services and get Perfect Experience
+        <br/>
+        Transform Your Umrah and Rawdah  Experience with Us!
+    </p>
+    <ng-template pTemplate="footer">
+        <button [routerLink]="'/auth/login'" pButton pRipple label="Go To Login"   class="p-button-rounded border-none ml-5 font-light line-height-2 bg-gold-600 text-white"></button>
+
+    </ng-template>
+</p-dialog>

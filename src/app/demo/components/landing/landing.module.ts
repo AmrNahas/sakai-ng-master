@@ -31,6 +31,8 @@ import {ListboxModule} from "primeng/listbox";
 import {SelectButtonModule} from "primeng/selectbutton";
 import {CheckboxModule} from "primeng/checkbox";
 import {RippleModule} from "primeng/ripple";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {DialogModule} from "primeng/dialog";
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import {RippleModule} from "primeng/ripple";
         SelectButtonModule,
         CheckboxModule,
         ButtonModule,
-        RippleModule
+        RippleModule,
+        ConfirmDialogModule,
+        DialogModule
 
     ],
     declarations: [LandingComponent]

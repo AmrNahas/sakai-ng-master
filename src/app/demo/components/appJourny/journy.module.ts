@@ -32,6 +32,16 @@ import {RippleModule} from "primeng/ripple";
 import {JournyComponent} from "./journy.component";
 import {JournyRoutingModule} from "./journy-routing.module";
 import {JourneyPlannerSrvcService} from "./journeyPlannerSrvc.service";
+import {SpinnerModule} from "primeng/spinner";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
+import {ResultComponent} from "./result.component";
+import {DataServiceSrvc} from "./data-service-srvc.service";
+import {ChatComponent} from "./chat.component";
+import {FieldsetModule} from "primeng/fieldset";
+import {SkeletonModule} from "primeng/skeleton";
+import {TimelineModule} from "primeng/timeline";
+import {CardModule} from "primeng/card";
+import {TooltipModule} from "primeng/tooltip";
 
 
 @NgModule({
@@ -71,10 +81,17 @@ import {JourneyPlannerSrvcService} from "./journeyPlannerSrvc.service";
         SelectButtonModule,
         CheckboxModule,
         ButtonModule,
-        RippleModule
+        RippleModule,
+        SpinnerModule,
+        ProgressSpinnerModule,
+        FieldsetModule,
+        SkeletonModule,
+        TimelineModule,
+        CardModule,
+        TooltipModule
 
     ],
-    declarations: [JournyComponent],
-    providers:[JourneyPlannerSrvcService]
+    declarations: [JournyComponent,ResultComponent,ChatComponent],
+    providers:[JourneyPlannerSrvcService,DataServiceSrvc]
 })
 export class LandingModule { }

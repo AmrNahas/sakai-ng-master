@@ -1,61 +1,64 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import {SelectItem} from "primeng/api";
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {LayoutService} from 'src/app/layout/service/app.layout.service';
+import {AuthServiceService} from "../auth/login/authService.service";
+import {ConfirmationService} from "primeng/api";
 
 @Component({
     selector: 'app-landing',
+    providers:[ConfirmationService ],
     templateUrl: './landing.component.html',
     styleUrls: ['./landing.componet.scss']
 })
 export class LandingComponent {
-    selectedCountry: any;
-    items: string[] = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
-    filteredItems: string[];
-    selectedItem: string;
+    userInfo: any;
 
     ngOnInit() {
-        this.cities = [
-            { label: 'Umrah', value: 1 },
-            { label: 'Rawda', value: 2 },
-        ];
 
+        this.userInfo = this.authSrvc.getUserInfo();
     }
 
-    // countries: any[] = [];
-    filteredCountries: any[] = [];
 
-    searchItems(event) {
-        this.filteredItems = this.items.filter(item => item.toLowerCase().includes(event.query.toLowerCase()));
+    constructor(public layoutService: LayoutService, public router: Router, public authSrvc: AuthServiceService, private confirmationService: ConfirmationService) {
     }
-    selectedCountryAdvanced: any[] = [];
-    selectedDrop: SelectItem = { value: '' };
-    cities: SelectItem[] = [];
-     countries = [
-         {"name": "Umrah", "code": "Umrah"},
-         {"name": "Rawda", "code": "Rawda"},
 
-     ];
 
-    filterCountry(event: any) {
-        const filtered: any[] = [];
-        const query = event.query;
-        for (let i = 0; i < this.countries.length; i++) {
-            const country = this.countries[i];
-            if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-                filtered.push(country);
-            }
+    goToChatAssistance() {
+        if (this.userInfo)
+            this.router.navigate(['/planner/chat']);
+        else {
+            this.showDialog();
         }
 
-        this.filteredCountries = filtered;
+    }
 
+    getUserName() {
+        this.confirm();
+    }
+
+    logOut() {
+        this.visible = false
+        this.authSrvc.logout();
+        this.router.navigate(['/auth/login']);
+    }
+
+    confirm() {
+        this.confirmationService.confirm({
+            header: 'PLease Login To Get Full Access To Our Services',
+            message: 'Please confirm to proceed.',
+            accept: () => {
+                this.logOut();
+            },
+            reject: () => {
+
+            }
+        });
     }
 
 
-    constructor(public layoutService: LayoutService, public router: Router) { }
+    visible: boolean = false;
 
-    next(stage) {
-
-        console.log(this.selectedDrop);
+    showDialog() {
+        this.visible = true;
     }
 }
