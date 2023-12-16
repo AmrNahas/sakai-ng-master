@@ -3,4 +3,5 @@ export class MessagesDto{
     msgTo:string;
     appAdvisorName:string;
     userName:string;
+    audioMsg:string;
 }

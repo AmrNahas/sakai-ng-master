@@ -10,6 +10,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ToastModule} from "primeng/toast";
 import {NgOtpInputModule} from "ng-otp-input";
 import {DialogModule} from "primeng/dialog";
+import {RippleModule} from "primeng/ripple";
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import {DialogModule} from "primeng/dialog";
         PasswordModule,
         ToastModule,
         NgOtpInputModule,
-        DialogModule
+        DialogModule,
+        RippleModule
     ],
     declarations: [LoginComponent]
 })

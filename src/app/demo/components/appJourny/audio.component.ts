@@ -7,22 +7,82 @@ import {MessagesDto} from "./messagesDto";
 import {GbtService} from "./gbt.service";
 import {GbtMsgResp} from "./gbtMsgResp";
 import {AuthServiceService} from "../auth/login/authService.service";
+import {AudioRecordingService} from "./AudioRecordingService";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
-    selector: 'app-chat',
-    templateUrl: './chat.component.html',
-    styleUrls: ['./chat.componet.scss']
+    selector: 'app-audio',
+    templateUrl: './audio.component.html',
+    styleUrls: ['./audio.componet.scss']
 })
-export class ChatComponent {
+export class AudioComponent {
 
     threadId: string = '';
-
+    isRecording = false;
+    recordedTime;
+    blobUrl;
+    teste;
     messageFrom: any;
     messgesList: Array<MessagesDto>;
 
-    constructor(public authSrvc: AuthServiceService, public layoutService: LayoutService, public router: Router, public service: JourneyPlannerSrvcService, private data: DataServiceSrvc, public gbtService: GbtService) {
+    constructor(private audioRecordingService: AudioRecordingService,
+                private sanitizer: DomSanitizer,
+                public authSrvc: AuthServiceService,
+                public layoutService: LayoutService, public router: Router,
+                public service: JourneyPlannerSrvcService,
+                private data: DataServiceSrvc, public gbtService: GbtService) {
 
+            this.audioRecordingService
+                .recordingFailed()
+                .subscribe(() => (this.isRecording = false));
+            this.audioRecordingService
+                .getRecordedTime()
+                .subscribe(time => (this.recordedTime = time));
+            this.audioRecordingService.getRecordedBlob().subscribe(data => {
+                this.teste = data;
+                this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(
+                    URL.createObjectURL(data.blob)
+                );
+            });
+        }
+
+    startRecording() {
+        if (!this.isRecording) {
+            this.isRecording = true;
+            this.audioRecordingService.startRecording();
+        }
     }
+
+    abortRecording() {
+        if (this.isRecording) {
+            this.isRecording = false;
+            this.audioRecordingService.abortRecording();
+        }
+    }
+
+    stopRecording() {
+        if (this.isRecording) {
+            this.audioRecordingService.stopRecording();
+            this.isRecording = false;
+        }
+    }
+
+    clearRecordedData() {
+        this.blobUrl = null;
+    }
+
+    ngOnDestroy(): void {
+        this.abortRecording();
+    }
+
+    download(): void {
+        const url = window.URL.createObjectURL(this.teste.blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = this.teste.title;
+        link.click();
+    }
+
 
     userInfo: any;
 

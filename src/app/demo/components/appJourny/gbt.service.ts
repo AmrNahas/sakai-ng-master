@@ -27,5 +27,10 @@ export class GbtService {
 
     }
 
+    public textToAudio(msg: string, threadId: string): Observable<string> {
+        return this.http.post<any>(this.mainHost + "/api/ChatGpt/texttoaudio", {"text": msg, },{});
+
+    }
+
 
 }

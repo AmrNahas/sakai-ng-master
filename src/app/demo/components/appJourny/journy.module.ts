@@ -42,6 +42,8 @@ import {SkeletonModule} from "primeng/skeleton";
 import {TimelineModule} from "primeng/timeline";
 import {CardModule} from "primeng/card";
 import {TooltipModule} from "primeng/tooltip";
+import {AudioComponent} from "./audio.component";
+import {AudioRecordingService} from "./AudioRecordingService";
 
 
 @NgModule({
@@ -88,10 +90,11 @@ import {TooltipModule} from "primeng/tooltip";
         SkeletonModule,
         TimelineModule,
         CardModule,
-        TooltipModule
+        TooltipModule,
+
 
     ],
-    declarations: [JournyComponent,ResultComponent,ChatComponent],
-    providers:[JourneyPlannerSrvcService,DataServiceSrvc]
+    declarations: [JournyComponent,ResultComponent,ChatComponent,AudioComponent],
+    providers:[JourneyPlannerSrvcService,DataServiceSrvc,AudioRecordingService]
 })
 export class LandingModule { }
