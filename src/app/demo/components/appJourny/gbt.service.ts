@@ -9,8 +9,8 @@ import {GbtMsgResp} from "./gbtMsgResp";
 })
 export class GbtService {
 
-    mainHost: string = 'http://192.168.0.7:55050';
-    mainHost_prod: string = '10.128.16.22:80';
+
+    mainHost_prod: string ='http://192.168.0.7:55050';    //prod >> '10.128.16.22:80';
     response: any = {};
 
     headers = new HttpHeaders()
@@ -24,17 +24,17 @@ export class GbtService {
 
 
     public sendMsg(msg: string, threadId: string): Observable<GbtMsgResp> {
-        return this.http.post<any>(this.mainHost + "/api/ChatGpt/CallAI", {"userMsg": msg, "threadId": threadId}, {});
+        return this.http.post<any>(this.mainHost_prod + "/api/ChatGpt/CallAI", {"userMsg": msg, "threadId": threadId}, {});
 
     }
 
     public textToAudio(msg: string, threadId: string): Observable<string> {
-        return this.http.post<any>(this.mainHost + "/api/ChatGpt/texttoaudio", {"text": msg,}, {});
+        return this.http.post<any>(this.mainHost_prod + "/api/ChatGpt/texttoaudio", {"text": msg,}, {});
 
     }
 
     public textToVideo(msg: string, threadId: string): Observable<any> {
-        return this.http.post<any>(this.mainHost + "/api/ChatGpt/texttovedio", {"text": msg,}, {});
+        return this.http.post<any>(this.mainHost_prod + "/api/ChatGpt/texttovedio", {"text": msg,}, {});
 
     }
 
@@ -44,7 +44,7 @@ export class GbtService {
         const formData = new FormData();
         formData.append('file', blob);
         console.log(blob)
-        return this.http.post<any>(this.mainHost + "/api/ChatGpt/audiototext", formData, {});
+        return this.http.post<any>(this.mainHost_prod + "/api/ChatGpt/audiototext", formData, {});
 
     }
 
