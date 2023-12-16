@@ -10,6 +10,7 @@ import {GbtMsgResp} from "./gbtMsgResp";
 export class GbtService {
 
     mainHost: string = 'http://192.168.0.7:55050';
+    mainHost_prod: string = '10.128.16.22:80';
     response: any = {};
 
     headers = new HttpHeaders()

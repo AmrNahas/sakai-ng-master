@@ -61,10 +61,10 @@
             </div>
 
             <div class="scrollableDiv" #scrollableDiv>
-                <div  >
-                    <vg-player *ngIf="srcInit && messgesList.length==0 ">
-                        <vg-player>
-                            <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" autoplay controls>
+                <div style="width:50%;alignment: center; display:contents;"   >
+                    <vg-player  *ngIf="srcInit && messgesList.length==0 ">
+                        <vg-player style="width:100%" >
+                            <video style="width:100%" [vgMedia]="$any(media)" #media id="singleVideo"  autoplay controls>
                                 <source src="{{srcInit}}" type="video/mp4">
                             </video>
                         </vg-player>
